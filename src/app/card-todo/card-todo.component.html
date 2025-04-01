@@ -1,8 +1,8 @@
 <mat-card appearance="outlined" class="card-popup">
-    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-title>{{card ? title : 'Pleas pick a card'}}</mat-card-title>
 
 
     <mat-card-content>
-        {{description}}
+        {{card ? description : 'Click on the card stack'}}
     </mat-card-content>
   </mat-card>

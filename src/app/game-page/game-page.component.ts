@@ -9,13 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { CardTodoComponent } from '../card-todo/card-todo.component';
-import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
   imports: [CommonModule, PlayerComponent, MatButtonModule, MatDividerModule,
-     MatIconModule, FormsModule, MatDialogModule, CardTodoComponent, GameInfoComponent],
+     MatIconModule, FormsModule, MatDialogModule, CardTodoComponent],
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.scss']
 })
@@ -41,6 +40,8 @@ export class GamePageComponent {
       this.currentCard = this.game.stack.pop()!;
       this.pickCardAnimation = true;
 
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
