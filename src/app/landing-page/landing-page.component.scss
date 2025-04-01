@@ -6,7 +6,7 @@ section {
     justify-content: center;
     background-color: rgb(64,64,64);
     img {
-        height: 400px;
+        height: 344px;
         width: 316px;
     }
 }
@@ -30,6 +30,7 @@ section {
 
 .start {
     img {
+        cursor: pointer;
         width: 228px;
         height: 56px;
         margin: 16px;

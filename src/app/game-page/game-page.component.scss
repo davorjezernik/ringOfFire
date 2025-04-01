@@ -2,7 +2,7 @@ section {
     width: 100vw;
     height: 100vh;
     max-width: 100%;
-    background-color: rgb(11, 131, 82);
+    background-color: rgb(221, 73, 73);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,4 +53,11 @@ section {
 .player-tag {
     position: absolute;
     right: 0px;
+}
+
+
+.add-button {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
 }

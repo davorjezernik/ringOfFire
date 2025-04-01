@@ -2,21 +2,30 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
-import {MatButtonModule, MatIconButton} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { CardTodoComponent } from '../card-todo/card-todo.component';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
   selector: 'app-game-page',
-  imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconButton],
+  standalone: true,
+  imports: [CommonModule, PlayerComponent, MatButtonModule, MatDividerModule,
+     MatIconModule, FormsModule, MatDialogModule, CardTodoComponent, GameInfoComponent],
   templateUrl: './game-page.component.html',
-  styleUrl: './game-page.component.scss'
+  styleUrls: ['./game-page.component.scss']
 })
 export class GamePageComponent {
   pickCardAnimation = false;
   currentCard: string = '';
   game: Game;
 
-  constructor() {
-    this.game = new Game(); 
+  constructor(public dialog: MatDialog) { 
+    this.game = new Game();
   }
 
   ngOnInit(): void {  
@@ -28,18 +37,24 @@ export class GamePageComponent {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game.stack.length > 0) {
       this.currentCard = this.game.stack.pop()!;
-      console.log(this.currentCard);
       this.pickCardAnimation = true;
-      console.log(this.currentCard);
-      console.log(this.game)
 
-
-      setTimeout(()=>{
+      setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 1000)
+      }, 1000);
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
+
+    dialogRef.afterClosed().subscribe((name: string | undefined) => {
+      if (name) { 
+        this.game.players.push(name);
+      }
+    });
   }
 }
