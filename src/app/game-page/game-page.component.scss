@@ -53,6 +53,13 @@ section {
 .player-tag {
     position: absolute;
     right: 0px;
+    z-index: 1;
+}
+
+.player-tag-mobile {
+    position: absolute;
+    left: 0px;
+    z-index: 1;
 }
 
 
@@ -60,4 +67,10 @@ section {
     position: absolute;
     right: 32px;
     bottom: 32px;
+}
+
+@media (max-width: 720px) {
+    .add-button {
+        bottom: 128px;
+    }
 }

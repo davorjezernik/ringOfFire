@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cardGame": {
+    "cardgame": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cardGame:build:production"
+              "buildTarget": "cardgame:build:production"
             },
             "development": {
-              "buildTarget": "cardGame:build:development"
+              "buildTarget": "cardgame:build:development"
             }
           },
           "defaultConfiguration": "development"

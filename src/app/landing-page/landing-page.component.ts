@@ -14,7 +14,6 @@ export class LandingPageComponent {
   constructor(private router: Router) { }
 
   newGame() {
-    this.router.navigateByUrl('/game');
-    //start game
+    this.router.navigateByUrl('/game/new');
   }
 }
